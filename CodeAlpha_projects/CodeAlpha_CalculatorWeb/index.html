@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="calculator-container">
+        <div class="calculator">
+            
+            <div class="display">
+                <div class="current-expression" id="expression-display"></div>
+                <div class="main-result" id="main-display">0</div>
+            </div>
+
+            <div class="toggle-keys">
+                <button class="key btn-toggle" id="sci-toggle">Sci</button>
+                <button class="key btn-toggle" id="history-toggle"><i class="fas fa-history"></i></button>
+            </div>
+
+            <div class="button-grids">
+                <div class="scientific-keys" id="scientific-keys">
+                    <button class="key btn-func" data-key="s">sin</button>
+                    <button class="key btn-func" data-key="c">cos</button>
+                    <button class="key btn-func" data-key="t">tan</button>
+                    <button class="key btn-func" data-key="(">(</button>
+                    <button class="key btn-func" data-key=")">)</button>
+                    <button class="key btn-func" data-key="l">log</button>
+                    <button class="key btn-func" data-key="n">ln</button>
+                    <button class="key btn-func" data-key="^">x<sup>y</sup></button>
+                    <button class="key btn-func" data-key="r">√</button>
+                    <button class="key btn-func" data-key="p">π</button>
+                    <button class="key btn-num" data-key="e">e</button>
+                    <button class="key btn-op" data-key="%">%</button>
+                </div>
+                
+                <div class="basic-keys">
+                    <button class_name="key btn-op" id="clear" data-key="Delete">C</button>
+                    <button class="key btn-op" id="backspace" data-key="Backspace"><i class="fas fa-backspace"></i></button>
+                    <button class="key btn-op" data-key="/">&divide;</button>
+                    <button class="key btn-op" data-key="*">&times;</button>
+                    <button class="key btn-num" data-key="7">7</button>
+                    <button class="key btn-num" data-key="8">8</button>
+                    <button class="key btn-num" data-key="9">9</button>
+                    <button class="key btn-op" data-key="-">&minus;</button>
+                    <button class="key btn-num" data-key="4">4</button>
+                    <button class="key btn-num" data-key="5">5</button>
+                    <button class="key btn-num" data-key="6">6</button>
+                    <button class="key btn-op" data-key="+">+</button>
+                    <button class="key btn-num" data-key="1">1</button>
+                    <button class="key btn-num" data-key="2">2</button>
+                    <button class="key btn-num" data-key="3">3</button>
+                    <button class="key btn-equals" id="equals" data-key="Enter">=</button>
+                    <button class="key btn-num" data-key="0">0</button>
+                    <button class="key btn-num" data-key=".">.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="history-panel" id="history-panel">
+        <h3>Calculation History</h3>
+        <button id="history-close-btn"><i class="fas fa-times"></i></button>
+        <ul id="history-list">
+            <li>No history yet</li>
+        </ul>
+        <button id="clear-history-btn">Clear History</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

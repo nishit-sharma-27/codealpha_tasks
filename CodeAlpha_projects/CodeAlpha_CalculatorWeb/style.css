@@ -1,0 +1,250 @@
+/* --- Global Styles & Dark Theme --- */
+:root {
+    --bg-color: #1a1c20;
+    --display-bg: #22252d;
+    --btn-bg: #2a2d37;
+    --btn-hover: #313440;
+    --op-btn-color: #007bff;
+    --equals-btn-bg: #007bff;
+    --equals-btn-hover: #0056b3;
+    --text-color: #fff;
+    --text-secondary: #aaa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Prevents scrollbars during animation */
+}
+
+/* --- Calculator Container --- */
+.calculator-container {
+    transition: transform 0.4s ease-in-out;
+}
+
+.calculator {
+    width: 340px;
+    background-color: var(--display-bg);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* --- Display Screen --- */
+.display {
+    padding: 20px;
+    text-align: right;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.current-expression {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    height: 30px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.main-result {
+    font-size: 3rem;
+    font-weight: 600;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* --- Toggle Keys (Sci, History) --- */
+.toggle-keys {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-toggle {
+    background-color: var(--btn-bg);
+    color: var(--op-btn-color);
+    font-weight: 600;
+}
+.btn-toggle.active {
+    background-color: var(--op-btn-color);
+    color: var(--text-color);
+}
+
+/* --- Button Grids --- */
+.button-grids {
+    display: flex;
+    flex-direction: column;
+}
+
+.scientific-keys {
+    display: none; /* Hidden by default */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Class added by JS to show scientific keys */
+.calculator.sci-active .scientific-keys {
+    display: grid;
+}
+
+.basic-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* --- Button Styling --- */
+.key {
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+.key:hover {
+    background-color: var(--btn-hover);
+}
+
+.btn-num {
+    color: var(--text-color);
+}
+.btn-op, .btn-func {
+    color: var(--op-btn-color);
+    font-weight: 500;
+}
+#clear {
+    color: #ff4d4d;
+}
+
+.btn-equals {
+    grid-column: span 2;
+    background-color: var(--equals-btn-bg);
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+.btn-equals:hover {
+    background-color: var(--equals-btn-hover);
+}
+
+/* --- History Panel (Off-screen) --- */
+.history-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #22252d;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Class added by JS to show the panel */
+.history-panel.show {
+    transform: translateX(0);
+}
+
+/* When history is shown, push the calculator to the left */
+.calculator-container.history-active {
+    transform: translateX(-150px);
+}
+
+.history-panel h3 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--btn-bg);
+    padding-bottom: 10px;
+}
+
+#history-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    color: var(--text-secondary);
+}
+
+#history-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--btn-bg);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+#history-list li:first-child {
+    border-top: 1px dashed var(--btn-bg);
+}
+
+#clear-history-btn {
+    background-color: #ff4d4d;
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 700px) {
+    /* On small screens, don't push the calculator, just overlay */
+    .calculator-container.history-active {
+        transform: translateX(0);
+    }
+    
+    .calculator {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        padding: 15px;
+    }
+    
+    .key {
+        padding: 18px;
+        font-size: 1.1rem;
+    }
+    
+    .main-result {
+        font-size: 2.5rem;
+    }
+    
+    .history-panel {
+        width: 80%;
+    }
+}
