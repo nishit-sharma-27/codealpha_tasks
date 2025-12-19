@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum Gallery</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Momentum Gallery</h1>
+    </header>
+
+    <div class="filter-container">
+        <div id="filter-buttons">
+            <button class="btn active" data-filter="all">All</button>
+            <button class="btn" data-filter="nature">Nature</button>
+            <button class="btn" data-filter="architecture">Architecture</button>
+            <button class="btn" data-filter="people">People</button>
+        </div>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="search" id="search-bar" placeholder="Search by title...">
+        </div>
+    </div>
+
+    <div id="gallery-grid">
+        <div class="gallery-item" data-category="nature" data-title="Misty Forest">
+            <img src="https://picsum.photos/id/10/600/400" alt="A misty forest path">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Misty Forest</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="architecture" data-title="Modern Building">
+            <img src="https://picsum.photos/id/101/600/400" alt="A modern glass building">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Modern Building</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="people" data-title="Woman in Field">
+            <img src="https://picsum.photos/id/1011/600/400" alt="Woman smiling in a field">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Woman in Field</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="nature" data-title="Crashing Waves">
+            <img src="https://picsum.photos/id/1015/600/400" alt="Ocean waves crashing on rocks">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Crashing Waves</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="architecture" data-title="City at Night">
+            <img src="https://picsum.photos/id/102/600/400" alt="Cityscape at night with light trails">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>City at Night</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="people" data-title="Man with Camera">
+            <img src="https://picsum.photos/id/1012/600/400" alt="Man holding a vintage camera">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Man with Camera</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="nature" data-title="Mountain Range">
+            <img src="https://picsum.photos/id/1016/600/400" alt="Snow-capped mountain range">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Mountain Range</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="architecture" data-title="Old Bridge">
+            <img src="https://picsum.photos/id/103/600/400" alt="An old arched stone bridge">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Old Bridge</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="people" data-title="Reading a Book">
+            <img src="https://picsum.photos/id/1025/600/400" alt="Person reading a book">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Reading a Book</h4>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="nature" data-title="Red Fox">
+            <img src="https://picsum.photos/id/1020/600/400" alt="A red fox in the snow">
+            <div class="item-overlay">
+                <i class="fas fa-search-plus"></i>
+                <h4>Red Fox</h4>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox-modal" class="lightbox">
+        <div class="lightbox-header">
+            <div class="lightbox-counter" id="lightbox-counter">1 / 10</div>
+            <div class="lightbox-controls">
+                <a id="download-btn" href="#" download>
+                    <i class="fas fa-download"></i>
+                </a>
+                <i class="fas fa-expand" id="fullscreen-btn"></i>
+                <i class="fas fa-times" id="close-btn"></i>
+            </div>
+        </div>
+        
+        <div class="lightbox-content-wrapper">
+            <a class="lightbox-nav" id="prev-btn">&#10094;</a>
+            
+            <div id="lightbox-image-container">
+                <img class="lightbox-content" id="lightbox-image" src="" alt="">
+                <div class="lightbox-caption" id="lightbox-caption"></div>
+            </div>
+            
+            <a class="lightbox-nav" id="next-btn">&#10095;</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
